@@ -1,1 +1,26 @@
-echo ""
+echo "# -----------------------------------------------------------------------"
+echo "# Would you like to setup FTP?"
+echo "# -----------------------------------------------------------------------"
+read -p "Y or N? : " ftp
+if [[ $ftp == [Yy] ]] ; then
+  apt-get install -y vsftpd
+  echo "# -----------------------------------------------------------------------"
+  echo "# Un-Comment the fallowing:"
+  echo "# write_enable=YES"
+  echo "# -----------------------------------------------------------------------"
+  read -p "Are you ready? Y or N : " ftp-nano
+  if [[ $ftp-nano == [Yy] ]] ; then
+    nano /etc/vsftpd.conf
+    restart vsftpd
+  fi
+  if [[ $ftp-nano == [Nn] ]] ; then
+    echo "# -----------------------------------------------------------------------"
+    echo "# You must edit /etc/vsftp.conf before FTP is fully enabled"
+    echo "# -----------------------------------------------------------------------"
+  fi
+fi
+if [[ $ftp == [Nn] ]] ; then
+  echo "# -----------------------------------------------------------------------"
+  echo "# FTP setup was skipped..."
+  echo "# -----------------------------------------------------------------------"
+fi
