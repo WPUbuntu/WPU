@@ -12,26 +12,12 @@ echo "#"
 echo "#                      W P U b u n t u   1 4 . 0 4"
 echo "#"
 echo "# ======================================================================="
+echo "# Are you ready to install?"
+echo "# -----------------------------------------------------------------------"
 read -p "Y or N? : " init
 if [[ $init == [Yy] ]] ; then
-echo "# -----------------------------------------------------------------------"
-echo "#                         S W A P   M E M O R Y"
-echo "# -----------------------------------------------------------------------"
-echo "# WPU suggest to setup SWAP if none exist, at least half your RAM."
-echo "# (i.e. If your RAM = 1024mb/1gb, than setup SWAP to 512mb or more)"
-echo "# -----------------------------------------------------------------------"
-echo "# Current Memory..."
-free -m
-echo "# -----------------------------------------------------------------------"
-echo "# Do you need to setup a SWAP-File?"
-echo "# -----------------------------------------------------------------------"
-read -p "Yes or no? If you are unsure, please type 'no': " swap
-if [[ $swap == [Yy] ]] ; then
-echo "need more"
-if
-if [[ $swap == [Nn] ]] ; then
-exit;
-fi
+apt-get update -qq && apt-get dist-upgrade
+bash sh/ftp
 if [[ $init == [Nn] ]] ; then
 exit;
 fi
