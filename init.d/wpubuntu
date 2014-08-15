@@ -1,0 +1,30 @@
+#!/bin/bash
+# LifeRay Startup Service script v1.0 by Faraz Haider 6 May 2012
+# acts as startup service script for LifeRay Portal.
+# USAGE: start|stop|status|logs
+#
+case "$1" in
+start)
+echo "Starting WPUbuntu."
+/wpu/init.d/start.sh
+;;
+stop)
+echo "Stopping WPUbuntu."
+/wpu/init.d/stop.sh
+;;
+logs)
+echo "See the logs of the LifeRay Web Portal."
+tail -f /dir/log.out
+;;
+status)
+# Check to see if the process is running
+ps aux|grep -i wpubuntu
+;;
+
+*)
+echo “WPUbuntu”
+echo $”Usage: $0 {start|stop|status|logs}”
+exit 1
+esac
+exit 0
+
